@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 18, "column": 0}, "map": {"version":3,"sources":["file:///Users/nikhilsoni/work/the%20quill%20and%20ink%20company/frontend/app/work/page.tsx"],"sourcesContent":["import Image from \"next/image\";\n\nexport default function WorkPage() {\n  return (\n    <main className=\"px-6 py-32 max-w-6xl mx-auto\">\n      <h1 className=\"font-[var(--font-serif)] text-5xl mb-12\">\n        Selected Work\n      </h1>\n\n      <div className=\"grid md:grid-cols-2 gap-10\">\n        {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (\n          <div key={i} className=\"relative aspect-[4/5]\">\n            <Image\n              src={`/images/work${i}.jpeg`}\n              alt=\"Lettering work\"\n              fill\n              className=\"object-cover\"\n            />\n          </div>\n        ))}\n      </div>\n    </main>\n  );\n}\n"],"names":[],"mappings":";;;;;AAAA;;;AAEe,SAAS;IACtB,qBACE,8OAAC;QAAK,WAAU;;0BACd,8OAAC;gBAAG,WAAU;0BAA0C;;;;;;0BAIxD,8OAAC;gBAAI,WAAU;0BACZ;oBAAC;oBAAG;oBAAG;oBAAG;oBAAG;oBAAG;oBAAG;oBAAG;oBAAG;iBAAE,CAAC,GAAG,CAAC,CAAC,kBAChC,8OAAC;wBAAY,WAAU;kCACrB,cAAA,8OAAC,wIAAK;4BACJ,KAAK,CAAC,YAAY,EAAE,EAAE,KAAK,CAAC;4BAC5B,KAAI;4BACJ,IAAI;4BACJ,WAAU;;;;;;uBALJ;;;;;;;;;;;;;;;;AAYpB"}}]
+}

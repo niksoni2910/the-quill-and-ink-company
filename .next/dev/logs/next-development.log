@@ -1,0 +1,46 @@
+[00:00:00.825] Server  LOG     ✓ Ready in 655ms
+[00:00:02.726] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:02.871] Browser ERROR   In HTML, %s cannot be a child of <%s>.%s
+This will cause a hydration error.%s <div> html  
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+>                       <html lang="en">
+                          <Fe position="top-right" toastOptions={{style:{...}}}>
+>                           <div
+>                             data-rht-toaster=""
+>                             style={{position:"fixed",zIndex:9999,top:16,left:16,right:16,bottom:16,pointerEvents:"none"}}
+>                             className={undefined}
+>                             onMouseEnter={function}
+>                             onMouseLeave={function}
+>                           >
+                          ...
+                  ...
+
+[00:00:02.871] Browser ERROR   <%s> cannot contain a nested %s.
+See this log for the ancestor stack trace. html <div>
+[00:00:02.871] Browser WARN    Image with src "/images/work1.jpeg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:00:07.196] Browser WARN    Image with src "/images/work2.jpeg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:00:31.696] Browser WARN    Image with src "/images/work3.jpeg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:00:35.204] Browser WARN    Image with src "/images/work4.jpeg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:00:38.689] Browser WARN    Image with src "/images/work5.jpeg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:00:42.198] Browser WARN    Image with src "/images/work6.jpeg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:00:47.380] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:27:36.151] Browser WARN    Image with src "/images/work7.jpeg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:27:36.151] Browser WARN    Image with src "/images/work9.jpeg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:27:36.151] Browser WARN    Image with src "/images/work8.jpeg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
