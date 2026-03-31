@@ -13,7 +13,23 @@ const app = express();
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 
-app.use(cors());
+const allowedOrigins = process.env.VERCEL_URL
+  ? [`https://${process.env.VERCEL_URL}`, process.env.FRONTEND_URL].filter(
+      Boolean
+    )
+  : undefined;
+
+app.use(
+  cors(
+    allowedOrigins
+      ? {
+          origin: allowedOrigins,
+          methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+          credentials: true,
+        }
+      : {}
+  )
+);
 app.use(express.json());
 
 app.use("/api/users", userRoutes);
