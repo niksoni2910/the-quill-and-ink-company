@@ -1,16 +1,20 @@
 {
-  "buildCommand": "cd frontend && npm install && npm run build",
-  "outputDirectory": "frontend/.next",
   "installCommand": "npm install && cd frontend && npm install && cd ../backend && npm install",
-  "framework": "nextjs",
-  "functions": {
-    "api/**/*.js": {
-      "memory": 1024,
-      "maxDuration": 30,
-      "includeFiles": "backend/src/**"
+  "builds": [
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/next"
+    },
+    {
+      "src": "api/index.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["backend/src/**", "backend/node_modules/**", "backend/package.json"]
+      }
     }
-  },
-  "rewrites": [
-    { "source": "/api/:path*", "destination": "/api" }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/index.js" },
+    { "src": "/(.*)", "dest": "/frontend/$1" }
   ]
 }
