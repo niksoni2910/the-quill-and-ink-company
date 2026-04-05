@@ -21,17 +21,21 @@ function ProductsContent() {
   const [category, setCategory] = useState(searchParams.get("category") || "");
   const [search, setSearch] = useState(searchParams.get("search") || "");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     apiRequest("/categories").then(setCategories);
   }, []);
 
   useEffect(() => {
+    setLoading(true);
     const params = new URLSearchParams();
 
     if (category) params.append("category", category);
     if (search) params.append("search", search);
-    apiRequest(`/products?${params.toString()}`).then(setProducts);
+    apiRequest(`/products?${params.toString()}`)
+      .then(setProducts)
+      .finally(() => setLoading(false));
   }, [category, search]);
 
   const handleAddToCart = async (e: React.MouseEvent, p: any) => {
@@ -132,7 +136,15 @@ function ProductsContent() {
 
         {/* PRODUCTS GRID */}
         <section className="flex-1">
-          {products.length === 0 ? (
+          {loading ? (
+            <div className="py-20 flex flex-col items-center justify-center gap-6">
+              <div className="relative w-12 h-12">
+                <div className="absolute inset-0 rounded-full border-2 border-[var(--color-accent)]/20" />
+                <div className="absolute inset-0 rounded-full border-2 border-transparent border-t-[var(--color-accent)] animate-spin" />
+              </div>
+              <p className="text-[11px] uppercase tracking-[0.3em] font-bold opacity-40 animate-pulse">Loading collection...</p>
+            </div>
+          ) : products.length === 0 ? (
             <div className="py-20 text-center opacity-40 italic">No products found for this selection.</div>
           ) : (
             <motion.div

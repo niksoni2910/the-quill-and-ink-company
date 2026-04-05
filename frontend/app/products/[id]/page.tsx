@@ -65,8 +65,12 @@ export default function ProductDetailPage() {
 
   if (!product) {
     return (
-      <main className="px-6 py-32 text-center opacity-70">
-        Loading product…
+      <main className="px-6 py-32 min-h-screen flex flex-col items-center justify-center gap-6">
+        <div className="relative w-14 h-14">
+          <div className="absolute inset-0 rounded-full border-2 border-[var(--color-accent)]/20" />
+          <div className="absolute inset-0 rounded-full border-2 border-transparent border-t-[var(--color-accent)] animate-spin" />
+        </div>
+        <p className="text-[11px] uppercase tracking-[0.3em] font-bold opacity-40 animate-pulse">Loading product details...</p>
       </main>
     );
   }
