@@ -23,10 +23,15 @@ export default function Footer() {
             Handcrafted calligraphy and bespoke stationery for life&apos;s most beautiful moments.
           </p>
           <div className="flex gap-8">
-            <Link href="#" className="hover:text-[var(--color-accent)] transition-colors duration-500 opacity-60 hover:opacity-100"><Instagram className="w-5 h-5" /></Link>
-            <Link href="#" className="hover:text-[var(--color-accent)] transition-colors duration-500 opacity-60 hover:opacity-100"><Facebook className="w-5 h-5" /></Link>
-            <Link href="#" className="hover:text-[var(--color-accent)] transition-colors duration-500 opacity-60 hover:opacity-100"><Twitter className="w-5 h-5" /></Link>
-            <Link href="mailto:hello@thequillandink.com" className="hover:text-[var(--color-accent)] transition-colors duration-500 opacity-60 hover:opacity-100"><Mail className="w-5 h-5" /></Link>
+            <Link 
+              href="https://www.instagram.com/quillandinkco._?igsh=MTlpbnFzczY2MDZu" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[var(--color-accent)] transition-colors duration-500 opacity-60 hover:opacity-100"
+            >
+              <Instagram className="w-5 h-5" />
+            </Link>
+            <Link href="mailto:thequillandinkcompany@gmail.com" className="hover:text-[var(--color-accent)] transition-colors duration-500 opacity-60 hover:opacity-100"><Mail className="w-5 h-5" /></Link>
           </div>
         </div>
 
@@ -81,12 +86,8 @@ export default function Footer() {
       </div>
 
       {/* BOTTOM */}
-      <div className="mt-32 pt-8 border-t border-[var(--color-ink)]/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-widest font-bold opacity-30">
-        <p>© {new Date().getFullYear()} The Quill & Ink Company.</p>
-        <div className="flex gap-8">
-          <Link href="/privacy" className="hover:opacity-100">Privacy Policy</Link>
-          <Link href="/terms" className="hover:opacity-100">Terms of Service</Link>
-        </div>
+      <div className="mt-32 pt-8 border-t border-[var(--color-ink)]/5 text-center text-[10px] uppercase tracking-widest font-bold opacity-30">
+        <p>© 2026 The Quill & Ink Company.</p>
       </div>
     </footer>
   );

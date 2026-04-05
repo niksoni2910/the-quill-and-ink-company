@@ -66,8 +66,14 @@ export default function ContactPage() {
             <section className="space-y-6">
               <h3 className="text-[10px] uppercase tracking-[0.3em] font-bold opacity-30 italic">Social Presence</h3>
               <div className="flex gap-6">
-                <a href="#" className="opacity-50 hover:opacity-100 hover:text-[var(--color-accent)] transition-all"><Instagram className="w-5 h-5" /></a>
-                <a href="https://wa.me/919324580059" className="opacity-50 hover:opacity-100 hover:text-[#25D366] transition-all"><MessageCircle className="w-5 h-5" /></a>
+                <a 
+                  href="https://www.instagram.com/quillandinkco._?igsh=MTlpbnFzczY2MDZu" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="opacity-50 hover:opacity-100 hover:text-[var(--color-accent)] transition-all"
+                >
+                  <Instagram className="w-5 h-5" />
+                </a>
               </div>
             </section>
           </div>
