@@ -18,8 +18,6 @@ function ProductsContent() {
 
   const [products, setProducts] = useState<any[]>([]);
   const [categories, setCategories] = useState<any[]>([]);
-  const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(10000);
   const [category, setCategory] = useState(searchParams.get("category") || "");
   const [search, setSearch] = useState(searchParams.get("search") || "");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -33,11 +31,8 @@ function ProductsContent() {
 
     if (category) params.append("category", category);
     if (search) params.append("search", search);
-    params.append("minPrice", String(minPrice));
-    params.append("maxPrice", String(maxPrice));
-
     apiRequest(`/products?${params.toString()}`).then(setProducts);
-  }, [minPrice, maxPrice, category, search]);
+  }, [category, search]);
 
   const handleAddToCart = async (e: React.MouseEvent, p: any) => {
     e.preventDefault();
@@ -133,37 +128,6 @@ function ProductsContent() {
             </ul>
           </section>
 
-          {/* PRICE FILTER */}
-          <section>
-            <h3 className="text-[10px] uppercase tracking-[0.2em] font-bold opacity-40 mb-6 underline underline-offset-8">Price Range</h3>
-            <div className="space-y-6 px-1">
-              <div className="flex justify-between text-[11px] font-bold opacity-60">
-                <span>₹{minPrice}</span>
-                <span>₹{maxPrice}</span>
-              </div>
-              <div className="space-y-8 relative pb-4">
-                <input
-                  type="range"
-                  min={0}
-                  max={10000}
-                  step={100}
-                  value={minPrice}
-                  onChange={(e) => setMinPrice(Number(e.target.value))}
-                  className="w-full accent-[var(--color-accent)] h-1 bg-black/5 rounded-full appearance-none cursor-pointer"
-                />
-                <input
-                  type="range"
-                  min={0}
-                  max={10000}
-                  step={100}
-                  value={maxPrice}
-                  onChange={(e) => setMaxPrice(Number(e.target.value))}
-                  className="w-full accent-[var(--color-accent)] h-1 bg-black/5 rounded-full appearance-none cursor-pointer"
-                />
-                <p className="text-[10px] opacity-40 italic mt-8">* Filter by budget</p>
-              </div>
-            </div>
-          </section>
         </aside>
 
         {/* PRODUCTS GRID */}
@@ -172,10 +136,10 @@ function ProductsContent() {
             <div className="py-20 text-center opacity-40 italic">No products found for this selection.</div>
           ) : (
             <motion.div
+              key={category + search} // Re-mount grid to trigger stagger animation on filter change
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16"
               initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
+              animate="visible"
               variants={{
                 hidden: { opacity: 0 },
                 visible: {
@@ -186,18 +150,17 @@ function ProductsContent() {
                 },
               }}
             >
-              <AnimatePresence mode="popLayout">
-                {products.map((p) => {
-                  const pricing = getProductPricing(p.id, p.price);
-                  return (
-                    <motion.div
-                      key={p.id}
-                      variants={{
-                        hidden: { opacity: 0, y: 30 },
-                        visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
-                      }}
-                      layout
-                    >
+              {products.map((p) => {
+                const pricing = getProductPricing(p.id, p.price);
+                return (
+                  <motion.div
+                    key={p.id}
+                    variants={{
+                      hidden: { opacity: 0, y: 30 },
+                      visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
+                    }}
+                    layout
+                  >
                       <Link href={`/products/${p.id}`} className="block group">
                         <div className="relative overflow-hidden aspect-[3/4] mb-6 bg-[var(--color-cream)]">
                           <motion.img
@@ -214,13 +177,16 @@ function ProductsContent() {
                             </div>
                           )}
 
-                          {/* ADD TO CART ACTION */}
+                          {/* WHATSAPP ACTION */}
                           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 w-[80%] z-20">
                             <button
-                              onClick={(e) => handleAddToCart(e, p)}
-                              className="bg-white text-[10px] uppercase font-bold tracking-widest py-3 px-4 shadow-xl hover:bg-black hover:text-white transition w-full flex items-center justify-center gap-2"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                window.open(`https://wa.me/919324580059?text=${encodeURIComponent(`Hi, I'm interested in the product: ${p.name}`)}`, '_blank');
+                              }}
+                              className="bg-[#25D366] text-white text-[10px] uppercase font-bold tracking-widest py-3 px-4 shadow-xl hover:bg-[#128C7E] transition w-full flex items-center justify-center gap-2"
                             >
-                              <Plus className="w-3 h-3" /> Add to Cart
+                              WhatsApp
                             </button>
                           </div>
                         </div>
@@ -242,7 +208,6 @@ function ProductsContent() {
                     </motion.div>
                   );
                 })}
-              </AnimatePresence>
             </motion.div>
           )}
         </section>

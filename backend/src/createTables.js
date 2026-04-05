@@ -47,6 +47,7 @@ const resetAndCreateTables = async () => {
         category_id UUID REFERENCES categories(id) ON DELETE SET NULL,
         status VARCHAR(20) DEFAULT 'active',
         badge VARCHAR(20),
+        description TEXT,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
 

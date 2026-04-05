@@ -12,7 +12,7 @@ export default function Footer() {
         border-t border-[#1A1A1A]/5
       "
     >
-      <div className="max-w-[1400px] mx-auto grid gap-16 lg:grid-cols-4">
+      <div className="max-w-[1400px] mx-auto grid gap-16 lg:grid-cols-3">
 
         {/* 1. BRAND */}
         <div className="lg:col-span-1">
@@ -41,40 +41,28 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* 3. CUSTOMER CARE */}
+        {/* 3. CONTACT */}
         <div>
-          <h4 className="font-serif text-lg mb-6">Support</h4>
-          <ul className="space-y-4 text-sm opacity-70">
-            <li><Link href="#" className="hover:text-[var(--color-accent)]">FAQ</Link></li>
-            <li><Link href="#" className="hover:text-[var(--color-accent)]">Shipping & Returns</Link></li>
-            <li><Link href="#" className="hover:text-[var(--color-accent)]">Care Guide</Link></li>
-            <li><Link href="#" className="hover:text-[var(--color-accent)]">Privacy Policy</Link></li>
-          </ul>
-        </div>
-
-        {/* 4. NEWSLETTER */}
-        <div>
-          <h4 className="font-serif text-lg mb-6">Join the community</h4>
-          <p className="text-sm opacity-70 mb-4">
-            Receive updates on new collections and workshops.
+          <h4 className="font-serif text-lg mb-6">Contact Us</h4>
+          <p className="text-sm opacity-70 mb-6">
+            Have questions or need help with a custom order? We'd love to hear from you.
           </p>
-          <form className="flex gap-2">
-            <input
-              type="email"
-              placeholder="Your email address"
-              className="
-                        bg-white/50 border border-[var(--color-rose)] 
-                        px-4 py-2 rounded-sm text-sm w-full
-                        focus:outline-none focus:border-[var(--color-accent)]
-                    "
-            />
-            <button
-              type="button"
-              className="bg-[var(--color-ink)] text-white px-4 py-2 text-xs uppercase tracking-wider rounded-sm hover:opacity-90"
-            >
-              Sign Up
-            </button>
-          </form>
+          <a
+            href="https://wa.me/919324580059"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              inline-flex items-center gap-3
+              bg-[#25D366] text-white
+              px-6 py-3 rounded-sm
+              text-xs uppercase tracking-wider font-bold
+              hover:bg-[#128C7E] transition-colors
+              shadow-sm
+            "
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-message-circle"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/></svg>
+            Chat on WhatsApp
+          </a>
         </div>
 
       </div>

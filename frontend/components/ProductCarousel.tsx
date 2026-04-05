@@ -52,21 +52,24 @@ export default function ProductCarousel() {
                             />
                             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors" />
 
-                            {/* QUICK ADD */}
+                            {/* WHATSAPP ACTION */}
                             <button
-                                onClick={(e) => handleAddToCart(e, p)}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    window.open(`https://wa.me/919324580059?text=${encodeURIComponent(`Hi, I'm interested in the product: ${p.name}`)}`, '_blank');
+                                }}
                                 className="
                   absolute bottom-4 right-4
-                  w-10 h-10 bg-white
+                  w-10 h-10 bg-[#25D366] text-white
                   flex items-center justify-center
                   rounded-full shadow-lg
                   opacity-0 translate-y-2
                   group-hover:opacity-100 group-hover:translate-y-0
                   transition-all duration-300
-                  hover:bg-[var(--color-accent)] hover:text-white
+                  hover:bg-[#128C7E]
                 "
                             >
-                                <Plus className="w-5 h-5" />
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-message-circle"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/></svg>
                             </button>
                         </div>
 

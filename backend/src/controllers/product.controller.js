@@ -5,17 +5,17 @@ import { pool } from "../db.js";
    POST /api/products
 ================================ */
 export const createProduct = async (req, res) => {
-  const { name, price, badge, categoryId, images } = req.body;
+  const { name, price, badge, category_id, description, images } = req.body;
 
   if (!name || !price || !images?.length) {
     return res.status(400).json({ error: "Missing fields" });
   }
 
   const productRes = await pool.query(
-    `INSERT INTO products (name, price, badge, category_id)
-     VALUES ($1, $2, $3, $4)
+    `INSERT INTO products (name, price, badge, category_id, description)
+     VALUES ($1, $2, $3, $4, $5)
      RETURNING *`,
-    [name, price, badge || null, categoryId || null]
+    [name, price, badge || null, category_id || null, description || null]
   );
 
   const product = productRes.rows[0];
@@ -36,7 +36,7 @@ export const createProduct = async (req, res) => {
    GET /api/products
 ================================ */
 export const getProducts = async (req, res) => {
-  const { category, minPrice, maxPrice } = req.query;
+  const { category, search, minPrice, maxPrice } = req.query;
 
   const values = [];
   let conditions = [`p.status = 'active'`];
@@ -44,6 +44,11 @@ export const getProducts = async (req, res) => {
   if (category) {
     values.push(category);
     conditions.push(`c.slug = $${values.length}`);
+  }
+
+  if (search) {
+    values.push(`%${search}%`);
+    conditions.push(`p.name ILIKE $${values.length}`);
   }
 
   if (minPrice) {
@@ -86,7 +91,7 @@ export const getProductById = async (req, res) => {
 
   try {
     const productRes = await pool.query(
-      `SELECT id, name, price, created_at
+      `SELECT id, name, price, description, created_at
        FROM products
        WHERE id = $1`,
       [id]
@@ -126,10 +131,11 @@ export const updateProduct = async (req, res) => {
     const productRes = await pool.query(
       `UPDATE products
        SET name = COALESCE($1, name),
-           price = COALESCE($2, price)
-       WHERE id = $3
-       RETURNING id, name, price`,
-      [name, price, id]
+           price = COALESCE($2, price),
+           description = COALESCE($3, description)
+       WHERE id = $4
+       RETURNING id, name, price, description`,
+      [name, price, req.body.description, id]
     );
 
     if (productRes.rows.length === 0) {

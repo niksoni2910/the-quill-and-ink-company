@@ -98,7 +98,7 @@ export default function Navbar() {
             </div>
 
             {/* CART */}
-            <Link href="/cart" aria-label="Cart" className="relative">
+            {/* <Link href="/cart" aria-label="Cart" className="relative">
               <ShoppingCart className="w-5 h-5 hover:text-[var(--color-accent)] transition" />
               {cartCount > 0 && (
                 <motion.span
@@ -116,10 +116,10 @@ export default function Navbar() {
                   {cartCount}
                 </motion.span>
               )}
-            </Link>
+            </Link> */}
 
             {/* AUTH */}
-            {token ? (
+            {/* {token ? (
               <Link href="/profile" aria-label="Profile">
                 <User className="w-5 h-5 cursor-pointer hover:text-[var(--color-accent)] transition" />
               </Link>
@@ -139,7 +139,7 @@ export default function Navbar() {
               >
                 Login
               </Link>
-            )}
+            )} */}
           </div>
 
           {/* MOBILE MENU TOGGLE */}
@@ -147,7 +147,7 @@ export default function Navbar() {
             className="lg:hidden flex items-center gap-4"
             onClick={() => setIsMobileMenuOpen(true)}
           >
-            <Link href="/cart" aria-label="Cart" className="relative">
+            {/* <Link href="/cart" aria-label="Cart" className="relative">
               <ShoppingCart className="w-5 h-5" />
               {cartCount > 0 && (
                 <motion.span
@@ -165,7 +165,7 @@ export default function Navbar() {
                   {cartCount}
                 </motion.span>
               )}
-            </Link>
+            </Link> */}
             <Menu className="w-6 h-6 hover:text-[var(--color-accent)] transition" />
           </button>
         </div>
@@ -231,7 +231,7 @@ export default function Navbar() {
                 </Link>
                 <hr className="border-[var(--color-rose)] opacity-50 my-2" />
 
-                {token ? (
+                {/* {token ? (
                   <>
                     <Link
                       href="/cart"
@@ -274,7 +274,7 @@ export default function Navbar() {
                   >
                     Login
                   </Link>
-                )}
+                )} */}
               </nav>
             </motion.div>
           </>

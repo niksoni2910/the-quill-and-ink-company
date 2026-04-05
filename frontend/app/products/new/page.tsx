@@ -23,7 +23,8 @@ export default function CreateProductPage() {
         name: "",
         price: "",
         categoryId: "",
-        image_base64: "", // We will convert file to base64
+        description: "",
+        images_base64: [] as string[], // Store multiple images
     });
 
     useEffect(() => {
@@ -57,26 +58,32 @@ export default function CreateProductPage() {
     };
 
     const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setForm({ ...form, image_base64: reader.result as string });
-            };
-            reader.readAsDataURL(file);
+        const files = Array.from(e.target.files || []);
+        if (files.length > 0) {
+            const promises = files.map((file) => {
+                return new Promise<string>((resolve) => {
+                    const reader = new FileReader();
+                    reader.onloadend = () => resolve(reader.result as string);
+                    reader.readAsDataURL(file);
+                });
+            });
+
+            Promise.all(promises).then((base64Images) => {
+                setForm(prev => ({ 
+                    ...prev, 
+                    images_base64: [...prev.images_base64, ...base64Images] 
+                }));
+            });
         }
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        if (!token) {
-            toast.error("Please login first");
-            return;
-        }
+        {/* Token check removed since login is disabled */}
 
-        if (!form.name || !form.price || !form.categoryId || !form.image_base64) {
-            toast.error("Please fill all fields");
+        if (!form.name || !form.price || !form.categoryId || form.images_base64.length === 0) {
+            toast.error("Please fill all fields and upload at least one image");
             return;
         }
 
@@ -89,7 +96,8 @@ export default function CreateProductPage() {
                     name: form.name,
                     price: Number(form.price),
                     category_id: form.categoryId,
-                    images: [form.image_base64], // Backend expects array
+                    description: form.description,
+                    images: form.images_base64, // Pass the entire array
                 },
                 token
             );
@@ -131,6 +139,17 @@ export default function CreateProductPage() {
                         className="w-full p-3 border border-[var(--color-rose)] rounded bg-white/60"
                         value={form.price}
                         onChange={(e) => setForm({ ...form, price: e.target.value })}
+                    />
+                </div>
+
+                {/* DESCRIPTION */}
+                <div>
+                    <label className="block text-sm mb-2 opacity-80">Description</label>
+                    <textarea
+                        rows={4}
+                        className="w-full p-3 border border-[var(--color-rose)] rounded bg-white/60"
+                        value={form.description}
+                        onChange={(e) => setForm({ ...form, description: e.target.value })}
                     />
                 </div>
 
@@ -190,20 +209,36 @@ export default function CreateProductPage() {
                 </div>
                 {/* IMAGE */}
                 <div>
-                    <label className="block text-sm mb-2 opacity-80">Product Image</label>
+                    <label className="block text-sm mb-2 opacity-80">Product Images</label>
                     <input
                         type="file"
                         accept="image/*"
+                        multiple
                         onChange={handleImageUpload}
                         className="w-full text-sm"
                     />
-                    {form.image_base64 && (
-                        <img
-                            src={form.image_base64}
-                            alt="Preview"
-                            className="mt-4 w-32 h-32 object-cover rounded shadow"
-                        />
-                    )}
+                    <div className="flex gap-4 flex-wrap mt-4">
+                        {form.images_base64.map((img, idx) => (
+                            <div key={idx} className="relative group">
+                                <img
+                                    src={img}
+                                    alt="Preview"
+                                    className="w-24 h-24 object-cover rounded shadow"
+                                />
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        const newImages = [...form.images_base64];
+                                        newImages.splice(idx, 1);
+                                        setForm({ ...form, images_base64: newImages });
+                                    }}
+                                    className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition"
+                                >
+                                    ✕
+                                </button>
+                            </div>
+                        ))}
+                    </div>
                 </div>
 
                 <button
