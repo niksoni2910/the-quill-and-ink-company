@@ -57,23 +57,60 @@ export default function CreateProductPage() {
         }
     };
 
-    const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const compressImage = (file: File): Promise<string> => {
+        return new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const img = new Image();
+                img.onload = () => {
+                    const canvas = document.createElement("canvas");
+                    const MAX_WIDTH = 1200;
+                    const MAX_HEIGHT = 1200;
+                    let width = img.width;
+                    let height = img.height;
+
+                    if (width > height) {
+                        if (width > MAX_WIDTH) {
+                            height *= MAX_WIDTH / width;
+                            width = MAX_WIDTH;
+                        }
+                    } else {
+                        if (height > MAX_HEIGHT) {
+                            width *= MAX_HEIGHT / height;
+                            height = MAX_HEIGHT;
+                        }
+                    }
+
+                    canvas.width = width;
+                    canvas.height = height;
+                    const ctx = canvas.getContext("2d");
+                    ctx?.drawImage(img, 0, 0, width, height);
+                    // Compress to 0.7 quality JPEG to save space
+                    resolve(canvas.toDataURL("image/jpeg", 0.7));
+                };
+                img.src = e.target?.result as string;
+            };
+            reader.readAsDataURL(file);
+        });
+    };
+
+    const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const files = Array.from(e.target.files || []);
         if (files.length > 0) {
-            const promises = files.map((file) => {
-                return new Promise<string>((resolve) => {
-                    const reader = new FileReader();
-                    reader.onloadend = () => resolve(reader.result as string);
-                    reader.readAsDataURL(file);
-                });
-            });
-
-            Promise.all(promises).then((base64Images) => {
+            setLoading(true); // Show a loading state while compressing
+            try {
+                const promises = files.map((file) => compressImage(file));
+                const compressedImages = await Promise.all(promises);
+                
                 setForm(prev => ({ 
                     ...prev, 
-                    images_base64: [...prev.images_base64, ...base64Images] 
+                    images_base64: [...prev.images_base64, ...compressedImages] 
                 }));
-            });
+            } catch (err) {
+                toast.error("Error processing images");
+            } finally {
+                setLoading(false);
+            }
         }
     };
 
