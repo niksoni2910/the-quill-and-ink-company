@@ -243,6 +243,14 @@ export default function Navbar() {
                   <span>Shop</span>
                   <span className="w-8 h-[1px] bg-[var(--color-accent)] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-right" />
                 </Link>
+                <Link
+                  href="/contact"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="hover:text-[var(--color-accent)] transition-colors duration-300 flex items-center justify-between group"
+                >
+                  <span>Contact</span>
+                  <span className="w-8 h-[1px] bg-[var(--color-accent)] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-right" />
+                </Link>
               </nav>
 
               <div className="mt-auto space-y-6">
