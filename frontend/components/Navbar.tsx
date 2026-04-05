@@ -213,6 +213,16 @@ export default function Navbar() {
                   <span>Contact</span>
                   <span className="w-8 h-[1px] bg-[var(--color-accent)] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-right" />
                 </Link>
+                {user?.role === "admin" && (
+                  <Link
+                    href="/admin/products"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-[var(--color-accent)] transition-colors duration-300 flex items-center justify-between group"
+                  >
+                    <span>Admin</span>
+                    <span className="w-8 h-[1px] bg-[var(--color-accent)] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-right" />
+                  </Link>
+                )}
               </nav>
 
               <div className="mt-auto space-y-6">
