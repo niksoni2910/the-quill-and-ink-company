@@ -59,6 +59,10 @@ export default function Navbar() {
             <span className="group-hover:text-[var(--color-ink)] transition-colors duration-300">Store</span>
             <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[var(--color-accent)] transition-all duration-500 group-hover:w-full" />
           </Link>
+          <Link href="/contact" className="relative group py-2">
+            <span className="group-hover:text-[var(--color-ink)] transition-colors duration-300">Contact</span>
+            <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[var(--color-accent)] transition-all duration-500 group-hover:w-full" />
+          </Link>
           {user?.role === "admin" && (
             <Link href="/admin/orders" className="relative group py-2 text-[var(--color-accent)]">
               <span className="group-hover:text-[var(--color-accent)] transition-colors duration-300">Orders</span>
