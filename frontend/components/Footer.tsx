@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Instagram, Facebook, Twitter, Mail } from "lucide-react";
+import { Instagram, Mail, Phone } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -55,7 +55,7 @@ export default function Footer() {
               <a href="mailto:thequillandinkcompany@gmail.com" className="hover:text-[var(--color-accent)] transition-colors">thequillandinkcompany@gmail.com</a>
             </p>
             <p className="flex items-start gap-3">
-              <span className="mt-1"><Instagram className="w-4 h-4" /></span>
+              <span className="mt-1"><Phone className="w-4 h-4" /></span>
               <span>9324580059</span>
             </p>
             <p className="flex items-start gap-3">
