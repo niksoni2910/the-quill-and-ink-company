@@ -84,13 +84,26 @@ export default function Services() {
                             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500" />
 
                             {/* CONTENT */}
-                            <div className="absolute inset-0 p-10 flex flex-col justify-between text-white border border-white/0 group-hover:border-white/10 transition-all duration-500">
-                                <span className="uppercase tracking-[0.2em] text-[10px] font-bold opacity-80">{service.tag}</span>
+                            <div className="absolute inset-0 p-10 flex flex-col justify-between text-white z-10">
+                                <div className="overflow-hidden">
+                                    <motion.span 
+                                        initial={{ y: 20, opacity: 0 }}
+                                        whileInView={{ y: 0, opacity: 0.8 }}
+                                        transition={{ duration: 0.5 }}
+                                        className="uppercase tracking-[0.3em] text-[10px] font-bold block"
+                                    >
+                                        {service.tag}
+                                    </motion.span>
+                                </div>
                                 <div>
-                                    <h3 className="font-[family-name:var(--font-serif)] text-3xl mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">{service.title}</h3>
-                                    <p className="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 leading-relaxed max-w-xs">{service.description}</p>
+                                    <h3 className="font-[family-name:var(--font-serif)] text-3xl lg:text-4xl mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700 ease-[0.22, 1, 0.36, 1]">{service.title}</h3>
+                                    <div className="h-[2px] w-0 group-hover:w-12 bg-[var(--color-rose)] mb-6 transition-all duration-700 delay-100" />
+                                    <p className="text-sm opacity-0 group-hover:opacity-70 transition-all duration-500 delay-200 leading-relaxed max-w-xs transform translate-y-2 group-hover:translate-y-0 text-white/90 font-medium">{service.description}</p>
                                 </div>
                             </div>
+
+                            {/* BORDER GLOW */}
+                            <div className="absolute inset-0 border border-white/0 group-hover:border-white/20 transition-all duration-1000 m-4 pointer-events-none" />
                         </motion.div>
                     ))}
                 </div>

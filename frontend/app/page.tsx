@@ -94,39 +94,53 @@ export default function Home() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-6 h-[600px]">
-          <Link href="/products?category=wedding" className="relative group overflow-hidden bg-[#f0f0f0]">
+          <Link href="/products?category=wedding" className="relative group overflow-hidden bg-[#f0f0f0] rounded-sm shadow-sm transition-all duration-700 hover:shadow-2xl">
             <video
               src="/videos/Customised Engraving Videos/CEV1.mp4"
-              className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
+              className="object-cover w-full h-full transition-transform duration-[1200ms] ease-out group-hover:scale-110"
               autoPlay
               loop
               muted
               playsInline
             />
-            <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-colors duration-500" />
-            <div className="absolute bottom-8 left-8">
-              <p className="text-white uppercase tracking-widest text-[10px] font-bold">Wedding Suites</p>
+            <div className="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition-colors duration-700" />
+            <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 p-8 text-center ring-1 ring-inset ring-white/20 m-4">
+              <span className="text-white uppercase tracking-[0.4em] text-[10px] font-bold mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700">Explore</span>
+              <p className="text-white font-[family-name:var(--font-serif)] text-3xl transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700 delay-100 italic">Wedding Suites</p>
+            </div>
+            <div className="absolute bottom-8 left-8 group-hover:opacity-0 transition-opacity duration-500">
+              <p className="text-white uppercase tracking-widest text-[9px] font-bold bg-black/20 backdrop-blur-sm px-3 py-1">Wedding Suites</p>
             </div>
           </Link>
-          <Link href="/products?category=paper-art" className="relative group overflow-hidden bg-[#e5e5e5]">
+          
+          <Link href="/products?category=paper-art" className="relative group overflow-hidden bg-[#e5e5e5] rounded-sm shadow-sm transition-all duration-700 hover:shadow-2xl">
             <video
               src="/videos/Quilling Frame Videos/QFV1.mp4"
-              className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
+              className="object-cover w-full h-full transition-transform duration-[1200ms] ease-out group-hover:scale-110"
               autoPlay
               loop
               muted
               playsInline
             />
-            <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-colors duration-500" />
-            <div className="absolute bottom-8 left-8">
-              <p className="text-white uppercase tracking-widest text-[10px] font-bold">Paper Art</p>
+            <div className="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition-colors duration-700" />
+             <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 p-8 text-center ring-1 ring-inset ring-white/20 m-4">
+              <span className="text-white uppercase tracking-[0.4em] text-[10px] font-bold mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700">View Art</span>
+              <p className="text-white font-[family-name:var(--font-serif)] text-3xl transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700 delay-100 italic">Paper Art</p>
+            </div>
+            <div className="absolute bottom-8 left-8 group-hover:opacity-0 transition-opacity duration-500">
+              <p className="text-white uppercase tracking-widest text-[9px] font-bold bg-black/20 backdrop-blur-sm px-3 py-1">Paper Art</p>
             </div>
           </Link>
-          <Link href="/products?category=workshops" className="relative group overflow-hidden bg-[#f5f5f5]">
-            <Image src="/images/Quilling Frame/QF5.jpeg" alt="Workshop" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
-            <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-colors duration-500" />
-            <div className="absolute bottom-8 left-8">
-              <p className="text-white uppercase tracking-widest text-[10px] font-bold">Learning</p>
+
+          <Link href="/products?category=workshops" className="relative group overflow-hidden bg-[#f5f5f5] rounded-sm shadow-sm transition-all duration-700 hover:shadow-2xl">
+            <Image src="/images/Quilling Frame/QF5.jpeg" alt="Workshop" fill className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110" />
+            <div className="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition-colors duration-700" />
+             <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 p-8 text-center ring-1 ring-inset ring-white/20 m-4">
+              <span className="text-white uppercase tracking-[0.4em] text-[10px] font-bold mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700">Join Us</span>
+              <p className="text-white font-[family-name:var(--font-serif)] text-3xl transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700 delay-100 italic">Learning</p>
+            </div>
+            <div className="absolute bottom-8 left-8 group-hover:opacity-0 transition-opacity duration-500">
+              <p className="text-white uppercase tracking-widest text-[9px] font-bold bg-black/20 backdrop-blur-sm px-3 py-1">Learning</p>
             </div>
           </Link>
         </div>

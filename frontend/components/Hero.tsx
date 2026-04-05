@@ -8,18 +8,36 @@ export default function Hero() {
   return (
     <section
       className="
-        flex
+        min-h-[80vh] flex
         items-center
-        px-2
+        px-6 lg:px-12
+        max-w-[1400px] mx-auto
       "
     >
       <motion.div
-        initial={{ opacity: 0, y: 36 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9, ease: "easeOut" }}
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: { opacity: 0 },
+          visible: {
+            opacity: 1,
+            transition: {
+              staggerChildren: 0.2,
+              delayChildren: 0.1
+            },
+          },
+        }}
         className="max-w-3xl"
       >
-        <h1
+        <motion.h1
+          variants={{
+            hidden: { opacity: 0, y: 40 },
+            visible: { 
+              opacity: 1, 
+              y: 0, 
+              transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] } 
+            },
+          }}
           className="
             font-[family-name:var(--font-serif)]
             text-[clamp(3rem,8vw,5.5rem)]
@@ -29,23 +47,43 @@ export default function Hero() {
         >
           Capturing
           <br />
-          <span className="text-[var(--color-accent)] opacity-90">
+          <motion.span 
+            initial={{ opacity: 0.5 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
+            className="text-[var(--color-accent)] opacity-90"
+          >
             the Soul
-          </span>
+          </motion.span>
           <br />
           of the Stroke
-        </h1>
+        </motion.h1>
 
-        <p className="mt-8 max-w-md text-sm lg:text-base leading-relaxed opacity-60 font-medium">
+        <motion.p 
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: { 
+              opacity: 1, 
+              y: 0, 
+              transition: { duration: 0.8 } 
+            },
+          }}
+          className="mt-8 max-w-md text-sm lg:text-base leading-relaxed opacity-60 font-medium"
+        >
           A Mumbai-based calligraphy and lettering studio dedicated to
           the timeless art of the human hand. We transform ink and paper
           into bespoke narratives.
-        </p>
+        </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: { 
+              opacity: 1, 
+              y: 0, 
+              transition: { duration: 0.8 } 
+            },
+          }}
           className="mt-12"
         >
           <Link

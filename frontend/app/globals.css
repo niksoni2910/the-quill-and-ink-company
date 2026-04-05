@@ -17,15 +17,23 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Custom Selection */
+::selection {
+  background-color: var(--color-accent);
+  color: white;
+}
+
 body {
   background-color: var(--color-paper);
   color: var(--color-ink);
   font-family: var(--font-sans);
+  line-height: 1.7;
+  letter-spacing: -0.01em;
 }
 
 /* Custom Scrollbar */
 .custom-scrollbar::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
 }
 .custom-scrollbar::-webkit-scrollbar-track {
   background: transparent;
@@ -33,5 +41,5 @@ body {
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background-color: var(--color-ink);
   border-radius: 10px;
-  opacity: 0.2;
+  border: 2px solid var(--color-paper);
 }

@@ -46,19 +46,23 @@ export default function Navbar() {
         </Link>
 
         {/* DESKTOP NAV LINKS */}
-        <nav className="hidden lg:flex items-center gap-12 text-[13px] uppercase tracking-[0.2em] font-medium opacity-80">
-          <Link href="/about" className="hover:text-[var(--color-rose)] transition">
-            About
+        <nav className="hidden lg:flex items-center gap-12 text-[12px] uppercase tracking-[0.3em] font-semibold opacity-70">
+          <Link href="/about" className="relative group py-2">
+            <span className="group-hover:text-[var(--color-ink)] transition-colors duration-300">About</span>
+            <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[var(--color-accent)] transition-all duration-500 group-hover:w-full" />
           </Link>
-          <Link href="/work" className="hover:text-[var(--color-rose)] transition">
-            Work
+          <Link href="/work" className="relative group py-2">
+            <span className="group-hover:text-[var(--color-ink)] transition-colors duration-300">Work</span>
+            <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[var(--color-accent)] transition-all duration-500 group-hover:w-full" />
           </Link>
-          <Link href="/products" className="hover:text-[var(--color-rose)] transition">
-            Store
+          <Link href="/products" className="relative group py-2">
+            <span className="group-hover:text-[var(--color-ink)] transition-colors duration-300">Store</span>
+            <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[var(--color-accent)] transition-all duration-500 group-hover:w-full" />
           </Link>
           {user?.role === "admin" && (
-            <Link href="/admin/orders" className="hover:text-[var(--color-rose)] transition text-[var(--color-accent)]">
-              Orders
+            <Link href="/admin/orders" className="relative group py-2 text-[var(--color-accent)]">
+              <span className="group-hover:text-[var(--color-accent)] transition-colors duration-300">Orders</span>
+              <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[var(--color-accent)] transition-all duration-500 group-hover:w-full" />
             </Link>
           )}
         </nav>
@@ -181,7 +185,7 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[55] lg:hidden"
             />
 
             {/* DRAWER */}
@@ -189,93 +193,62 @@ export default function Navbar() {
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "tween", duration: 0.3 }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
               className="
                 fixed top-0 right-0 bottom-0
-                w-[80%] max-w-sm
-                bg-[#FDF9F9]
-                z-50
-                p-8
-                shadow-2xl
+                w-[85%] max-w-sm
+                bg-[#FEFAF6]
+                z-[60]
+                p-10
+                shadow-[-20px_0_60px_-15px_rgba(0,0,0,0.3)]
                 flex flex-col
               "
             >
-              <button
-                className="self-end mb-8"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <X className="w-6 h-6 hover:text-[var(--color-accent)] transition" />
-              </button>
+              <div className="flex justify-between items-center mb-16">
+                <span className="font-[family-name:var(--font-cursive)] text-xl">Menu</span>
+                <button
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="p-2 -mr-2"
+                >
+                  <X className="w-6 h-6 hover:text-[var(--color-accent)] transition" />
+                </button>
+              </div>
 
-              <nav className="flex flex-col gap-6 text-lg font-medium">
+              <nav className="flex flex-col gap-8 text-2xl font-[family-name:var(--font-serif)] italic">
                 <Link
                   href="/about"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="hover:text-[var(--color-accent)] transition"
+                  className="hover:text-[var(--color-accent)] transition-colors duration-300 flex items-center justify-between group"
                 >
-                  About
+                  <span>About Us</span>
+                  <span className="w-8 h-[1px] bg-[var(--color-accent)] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-right" />
                 </Link>
                 <Link
                   href="/work"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="hover:text-[var(--color-accent)] transition"
+                  className="hover:text-[var(--color-accent)] transition-colors duration-300 flex items-center justify-between group"
                 >
-                  Our Work
+                  <span>Our Work</span>
+                  <span className="w-8 h-[1px] bg-[var(--color-accent)] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-right" />
                 </Link>
                 <Link
                   href="/products"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="hover:text-[var(--color-accent)] transition"
+                  className="hover:text-[var(--color-accent)] transition-colors duration-300 flex items-center justify-between group"
                 >
-                  Shop
+                  <span>Shop</span>
+                  <span className="w-8 h-[1px] bg-[var(--color-accent)] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-right" />
                 </Link>
-                <hr className="border-[var(--color-rose)] opacity-50 my-2" />
-
-                {/* {token ? (
-                  <>
-                    <Link
-                      href="/cart"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="hover:text-[var(--color-accent)] transition flex items-center gap-2 group"
-                    >
-                      <div className="relative">
-                        <ShoppingCart className="w-5 h-5" />
-                        {cartCount > 0 && (
-                          <motion.span
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
-                            className="
-                              absolute -top-2 -right-2
-                              bg-[var(--color-accent)] text-white
-                              text-[8px] font-bold
-                              w-3.5 h-3.5 flex items-center justify-center
-                              rounded-full
-                            "
-                          >
-                            {cartCount}
-                          </motion.span>
-                        )}
-                      </div>
-                      Cart
-                    </Link>
-                    <Link
-                      href="/profile"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="hover:text-[var(--color-accent)] transition flex items-center gap-2"
-                    >
-                      <User className="w-5 h-5" /> Profile
-                    </Link>
-                  </>
-                ) : (
-                  <Link
-                    href="/login"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="hover:text-[var(--color-accent)] transition"
-                  >
-                    Login
-                  </Link>
-                )} */}
               </nav>
+
+              <div className="mt-auto space-y-6">
+                <div className="h-[1px] bg-black/5 w-full" />
+                <div className="space-y-4">
+                  <p className="text-[10px] uppercase tracking-widest font-bold opacity-30 italic">Get in touch</p>
+                  <p className="text-sm font-medium opacity-60">thequillandinkcompany@gmail.com</p>
+                  <p className="text-sm font-medium opacity-60">+91 9324580059</p>
+                </div>
+              </div>
             </motion.div>
           </>
         )}
