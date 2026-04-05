@@ -11,15 +11,7 @@ export default function Navbar() {
   const { token, user } = useAuth();
   const { cartCount } = useCart();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      window.location.href = `/products?search=${encodeURIComponent(searchQuery)}`;
-    }
-  };
 
   return (
     <header
@@ -64,8 +56,8 @@ export default function Navbar() {
             <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[var(--color-accent)] transition-all duration-500 group-hover:w-full" />
           </Link>
           {user?.role === "admin" && (
-            <Link href="/admin/orders" className="relative group py-2 text-[var(--color-accent)]">
-              <span className="group-hover:text-[var(--color-accent)] transition-colors duration-300">Orders</span>
+            <Link href="/admin/products" className="relative group py-2 text-[var(--color-accent)]">
+              <span className="group-hover:text-[var(--color-accent)] transition-colors duration-300">Admin</span>
               <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[var(--color-accent)] transition-all duration-500 group-hover:w-full" />
             </Link>
           )}
@@ -74,36 +66,6 @@ export default function Navbar() {
         {/* RIGHT ACTIONS (DESKTOP) & HAMBURGER */}
         <div className="flex items-center gap-8">
           <div className="hidden lg:flex items-center gap-8">
-            {/* SEARCH */}
-            <div className="relative flex items-center">
-              <AnimatePresence>
-                {isSearchOpen && (
-                  <motion.form
-                    initial={{ width: 0, opacity: 0 }}
-                    animate={{ width: 200, opacity: 1 }}
-                    exit={{ width: 0, opacity: 0 }}
-                    onSubmit={handleSearch}
-                    className="absolute right-8"
-                  >
-                    <input
-                      autoFocus
-                      type="text"
-                      placeholder="Search products..."
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className="
-                        w-full bg-transparent border-b border-[var(--color-ink)]/20
-                        px-2 py-1 text-xs outline-none focus:border-[var(--color-accent)]
-                      "
-                    />
-                  </motion.form>
-                )}
-              </AnimatePresence>
-              <Search
-                className="w-4 h-4 cursor-pointer hover:text-[var(--color-rose)] transition opacity-60"
-                onClick={() => setIsSearchOpen(!isSearchOpen)}
-              />
-            </div>
 
             {/* CART */}
             {/* <Link href="/cart" aria-label="Cart" className="relative">

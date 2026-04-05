@@ -132,10 +132,12 @@ export const updateProduct = async (req, res) => {
       `UPDATE products
        SET name = COALESCE($1, name),
            price = COALESCE($2, price),
-           description = COALESCE($3, description)
-       WHERE id = $4
-       RETURNING id, name, price, description`,
-      [name, price, req.body.description, id]
+           description = COALESCE($3, description),
+           category_id = COALESCE($4, category_id),
+           badge = COALESCE($5, badge)
+       WHERE id = $6
+       RETURNING id, name, price, description, category_id, badge`,
+      [name, price, req.body.description, req.body.category_id, req.body.badge, id]
     );
 
     if (productRes.rows.length === 0) {
