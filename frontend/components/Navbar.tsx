@@ -156,9 +156,9 @@ export default function Navbar() {
 
             {/* DRAWER */}
             <motion.div
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
+              initial={{ x: "100%", opacity: 1 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: "100%", opacity: 1 }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
               className="
                 fixed top-0 right-0 bottom-0
