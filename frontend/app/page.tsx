@@ -5,6 +5,7 @@ import ProductCarousel from "@/components/ProductCarousel";
 import Link from "next/link";
 import Image from "next/image";
 import { Truck, ShieldCheck, Sparkles, Heart } from "lucide-react";
+import CraftingMemories from "@/components/CraftingMemories";
 
 export default function Home() {
   return (
@@ -58,7 +59,7 @@ export default function Home() {
           <div className="w-12 h-[1px] bg-[var(--color-rose)] mx-auto mt-8" />
           <p className="text-lg lg:text-xl leading-[1.8] opacity-60 max-w-2xl mx-auto italic font-serif">
             At The Quill & Ink Company, we believe that every stroke tells a story.
-            From bespoke wedding invitations to personalized quilling art, we bring
+            From personalised wedding invitations to personalized quilling art, we bring
             the timeless elegance of craft into the modern world.
           </p>
         </div>
@@ -151,6 +152,9 @@ export default function Home() {
           </Link>
         </div>
       </section>
+      
+      {/* 4.1 CRAFTING MEMORIES showcase */}
+      <CraftingMemories />
 
       {/* 5. CTA SECTION */}
       <section className="bg-[var(--color-ink)] text-[#FDF9F9] py-32 px-6 text-center">
@@ -158,8 +162,8 @@ export default function Home() {
           Ready to tell your story?
         </h2>
         <p className="opacity-70 max-w-xl mx-auto mb-10 text-lg">
-          Whether you need a custom logo, a handwritten letter, or a full event suite,
-          we are here to bring your vision to life.
+          Whether you need a personalised gift, a handwritten letter, or a curated 
+          hamper, we are here to bring your vision to life.
         </p>
         <Link
           href="/products"

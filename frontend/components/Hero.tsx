@@ -72,7 +72,7 @@ export default function Hero() {
         >
           A Mumbai-based calligraphy and lettering studio dedicated to
           the timeless art of the human hand. We transform ink and paper
-          into bespoke narratives.
+          into personalised narratives.
         </motion.p>
 
         <motion.div
