@@ -105,10 +105,10 @@ export default function Home() {
               muted
               playsInline
             />
-            <div className="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition-colors duration-700" />
-            <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 p-8 text-center ring-1 ring-inset ring-white/20 m-4">
-              <span className="text-white uppercase tracking-[0.4em] text-[10px] font-bold mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700">Explore</span>
-              <p className="text-white font-[family-name:var(--font-serif)] text-3xl transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700 delay-100 italic">Personalisation</p>
+            <div className="absolute inset-0 bg-black/30 md:bg-black/10 md:group-hover:bg-black/40 transition-colors duration-700" />
+            <div className="absolute inset-0 flex flex-col items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-700 p-8 text-center ring-1 ring-inset ring-white/20 m-4">
+              <span className="text-white uppercase tracking-[0.4em] text-[10px] font-bold mb-4 transform translate-y-0 md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-700">Explore</span>
+              <p className="text-white font-[family-name:var(--font-serif)] text-3xl transform translate-y-0 md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-700 delay-100 italic">Personalisation</p>
             </div>
           </Link>
           
@@ -122,10 +122,10 @@ export default function Home() {
               muted
               playsInline
             />
-            <div className="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition-colors duration-700" />
-             <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 p-8 text-center ring-1 ring-inset ring-white/20 m-4">
-              <span className="text-white uppercase tracking-[0.4em] text-[10px] font-bold mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700">View Art</span>
-              <p className="text-white font-[family-name:var(--font-serif)] text-3xl transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700 delay-100 italic">Paper Art</p>
+            <div className="absolute inset-0 bg-black/30 md:bg-black/10 md:group-hover:bg-black/40 transition-colors duration-700" />
+             <div className="absolute inset-0 flex flex-col items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-700 p-8 text-center ring-1 ring-inset ring-white/20 m-4">
+              <span className="text-white uppercase tracking-[0.4em] text-[10px] font-bold mb-4 transform translate-y-0 md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-700">View Art</span>
+              <p className="text-white font-[family-name:var(--font-serif)] text-3xl transform translate-y-0 md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-700 delay-100 italic">Paper Art</p>
             </div>
           </Link>
 
@@ -137,13 +137,13 @@ export default function Home() {
 
           {/* IMAGE 3: The Process - Row 2, Col 2 */}
           <div className="relative group overflow-hidden rounded-sm shadow-sm">
-            <Image src="/images/Crafting Memories/CM3.jpeg" alt="The Process" fill className="object-cover transition-transform duration-[1200ms] group-hover:scale-110" />
+            <Image src="/images/Crafting Memories/CM2.jpeg" alt="The Process" fill className="object-cover transition-transform duration-[1200ms] group-hover:scale-110" />
             <div className="absolute inset-0 bg-black/5 group-hover:bg-black/20 transition-colors duration-700" />
           </div>
 
           {/* IMAGE 4: Finished Work - Row 2, Col 3 */}
           <div className="relative group overflow-hidden rounded-sm shadow-sm">
-            <Image src="/images/Crafting Memories/CM4.jpeg" alt="Finished Work" fill className="object-cover transition-transform duration-[1200ms] group-hover:scale-110" />
+            <Image src="/images/Crafting Memories/CM3.jpeg" alt="Finished Work" fill className="object-cover transition-transform duration-[1200ms] group-hover:scale-110" />
             <div className="absolute inset-0 bg-black/5 group-hover:bg-black/20 transition-colors duration-700" />
           </div>
         </div>
