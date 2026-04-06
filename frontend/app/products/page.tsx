@@ -76,21 +76,7 @@ function ProductsContent() {
         {/* FILTERS */}
         <aside className={`${isFilterOpen ? "block" : "hidden lg:block"} space-y-12`}>
           {/* ADMIN ACTION */}
-          {user?.role === "admin" && (
-            <Link
-              href="/products/new"
-              className="
-                block w-full text-center
-                bg-[var(--color-accent)] text-white
-                py-4 mb-8
-                rounded-sm
-                text-[10px] uppercase tracking-[0.2em] font-bold
-                hover:opacity-90 transition shadow-sm
-              "
-            >
-              + Create Product
-            </Link>
-          )}
+
 
           {/* SEARCH IN FILTERS */}
           <section>
