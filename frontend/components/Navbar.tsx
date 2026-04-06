@@ -55,12 +55,7 @@ export default function Navbar() {
             <span className="group-hover:text-[var(--color-ink)] transition-colors duration-300">Contact</span>
             <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[var(--color-accent)] transition-all duration-500 group-hover:w-full" />
           </Link>
-          {user?.role === "admin" && (
-            <Link href="/admin/products" className="relative group py-2 text-[var(--color-accent)]">
-              <span className="group-hover:text-[var(--color-accent)] transition-colors duration-300">Admin</span>
-              <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[var(--color-accent)] transition-all duration-500 group-hover:w-full" />
-            </Link>
-          )}
+
         </nav>
 
         {/* RIGHT ACTIONS (DESKTOP) & HAMBURGER */}
@@ -213,16 +208,7 @@ export default function Navbar() {
                   <span>Contact</span>
                   <span className="w-8 h-[1px] bg-[var(--color-accent)] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-right" />
                 </Link>
-                {user?.role === "admin" && (
-                  <Link
-                    href="/admin/products"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-[var(--color-accent)] transition-colors duration-300 flex items-center justify-between group"
-                  >
-                    <span>Admin</span>
-                    <span className="w-8 h-[1px] bg-[var(--color-accent)] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-right" />
-                  </Link>
-                )}
+
               </nav>
 
               <div className="mt-auto space-y-6">
