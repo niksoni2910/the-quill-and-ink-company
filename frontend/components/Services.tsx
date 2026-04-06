@@ -21,7 +21,7 @@ const services = [
     {
         title: "Learning Hub",
         tag: "Workshops",
-        image: "/images/Quilling Frame/QF4.jpeg",
+        image: "/images/Learning Hub/LH1.jpeg",
         description: "Join our intimate sessions to master the art of the nib and quilling.",
         width: "md:col-span-1"
     },
