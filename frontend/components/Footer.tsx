@@ -20,7 +20,7 @@ export default function Footer() {
             The Quill <br /> & Ink Company
           </h3>
           <p className="text-base leading-relaxed opacity-50 max-w-sm font-medium">
-            Handcrafted calligraphy and bespoke stationery for life&apos;s most beautiful moments.
+            Handcrafted calligraphy and personalised stationery for life&apos;s most beautiful moments.
           </p>
           <div className="flex gap-8">
             <Link 

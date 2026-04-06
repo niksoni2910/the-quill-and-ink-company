@@ -5,17 +5,17 @@ import Image from "next/image";
 
 const services = [
     {
-        title: "Bespoke Calligraphy",
+        title: "Personalised Calligraphy",
         tag: "Wedding & Personal",
         image: "/images/Customised Engraving/CE3.jpeg",
-        description: "Elegant calligraphy for invitations, envelopes, and personlalized stationery.",
+        description: "Elegant hand-lettering for invitations, envelopes, and personalised stationery.",
         width: "md:col-span-2"
     },
     {
         title: "Paper Quilling",
         tag: "Art & Decor",
         image: "/images/Quilling Frame/QF3.jpeg",
-        description: "Intricate paper art captured in frames, bespoke for your space.",
+        description: "Intricate paper art captured in frames, crafted for your space.",
         width: "md:col-span-1"
     },
     {
@@ -26,10 +26,10 @@ const services = [
         width: "md:col-span-1"
     },
     {
-        title: "Brand Lettering",
-        tag: "Commercial",
-        image: "/images/Customised Engraving/CE4.jpeg",
-        description: "Logos and type systems that carry the warmth of the human hand.",
+        title: "Hampers",
+        tag: "Gifting",
+        image: "/images/Hamper/H1.jpeg",
+        description: "Thoughtfully curated gift sets that blend artistry with premium selection.",
         width: "md:col-span-2"
     },
 ];

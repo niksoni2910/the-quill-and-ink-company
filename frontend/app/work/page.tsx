@@ -40,7 +40,7 @@ export default function WorkPage() {
           Selected Work
         </h1>
         <p className="text-sm leading-relaxed opacity-80">
-          A curated selection of works spanning various bespoke and hand-crafted techniques.
+          A curated selection of works spanning various personalised and hand-crafted techniques.
           Select a category to explore our portfolio.
         </p>
       </div>

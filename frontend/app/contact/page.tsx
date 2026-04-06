@@ -83,7 +83,7 @@ export default function ContactPage() {
             <h2 className="font-[family-name:var(--font-serif)] text-3xl italic">Start a Conversation</h2>
             <p className="text-sm opacity-60 leading-relaxed font-medium">
               We aim to respond to all inquiries within 24–48 hours. For urgent 
-              bespoke requirements, please reach out via WhatsApp.
+              personalised requirements, please reach out via WhatsApp.
             </p>
             <a
               href="https://wa.me/919324580059"
