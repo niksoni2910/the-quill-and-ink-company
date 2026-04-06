@@ -5,7 +5,6 @@ import ProductCarousel from "@/components/ProductCarousel";
 import Link from "next/link";
 import Image from "next/image";
 import { Truck, ShieldCheck, Sparkles, Heart } from "lucide-react";
-import CraftingMemories from "@/components/CraftingMemories";
 
 export default function Home() {
   return (
@@ -82,38 +81,38 @@ export default function Home() {
       {/* 3. FEATURED / SERVICES (Existing) */}
       <Services />
 
-      {/* 4. GALLERY / SHOWCASE STRIP */}
+      {/* 4. GALLERY / CRAFTING MEMORIES */}
       <section className="py-32 px-6 max-w-[1400px] mx-auto">
         <div className="text-center mb-16">
+          <span className="uppercase tracking-[0.3em] text-[10px] font-bold opacity-40 block mb-3">The Personal Touch</span>
           <h2 className="font-[family-name:var(--font-serif)] text-4xl lg:text-5xl mb-6">
-            Curated Collections
+            Crafting <span className="italic font-normal">Memories</span>
           </h2>
-          <p className="opacity-50 max-w-xl mx-auto text-sm lg:text-base leading-relaxed">
-            Explore our latest works, featuring hand-pressed paper,
-            gold leaf detailing, and custom wax seals.
+          <p className="opacity-50 max-w-xl mx-auto text-sm lg:text-base leading-relaxed italic font-serif">
+            More than just ink on paper, we create keepsakes that preserve your 
+            most precious moments through the timeless art of craft.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 h-[600px]">
-          <Link href="/products?category=wedding" className="relative group overflow-hidden bg-[#f0f0f0] rounded-sm shadow-sm transition-all duration-700 hover:shadow-2xl">
+        <div className="grid md:grid-cols-3 gap-6 auto-rows-[300px] md:auto-rows-[400px]">
+          {/* VIDEO 1: Personalisation (PORTRAIT) - Spans 2 rows in Col 1 */}
+          <Link href="/products?category=personalisation" className="md:row-span-2 relative group overflow-hidden bg-[#f0f0f0] rounded-sm shadow-sm transition-all duration-700 hover:shadow-2xl">
             <video
-              src="/videos/Customised Engraving Videos/CEV1.mp4"
+              src="/videos/Learning Hub Videos/LHV1.mp4"
               className="object-cover w-full h-full transition-transform duration-[1200ms] ease-out group-hover:scale-110"
               autoPlay
               loop
               muted
               playsInline
             />
-            <div className="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition-colors duration-700" />
-            <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 p-8 text-center ring-1 ring-inset ring-white/20 m-4">
-              <span className="text-white uppercase tracking-[0.4em] text-[10px] font-bold mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700">Explore</span>
-              <p className="text-white font-[family-name:var(--font-serif)] text-3xl transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700 delay-100 italic">Wedding Suites</p>
-            </div>
-            <div className="absolute bottom-8 left-8 group-hover:opacity-0 transition-opacity duration-500">
-              <p className="text-white uppercase tracking-widest text-[9px] font-bold bg-black/20 backdrop-blur-sm px-3 py-1">Wedding Suites</p>
+            <div className="absolute inset-0 bg-black/30 md:bg-black/10 md:group-hover:bg-black/40 transition-colors duration-700" />
+            <div className="absolute inset-0 flex flex-col items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-700 p-8 text-center ring-1 ring-inset ring-white/20 m-4">
+              <span className="text-white uppercase tracking-[0.4em] text-[10px] font-bold mb-4 transform translate-y-0 md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-700">Explore</span>
+              <p className="text-white font-[family-name:var(--font-serif)] text-3xl transform translate-y-0 md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-700 delay-100 italic">Personalisation</p>
             </div>
           </Link>
           
+          {/* VIDEO 2: Paper Art - Row 1, Col 2 */}
           <Link href="/products?category=paper-art" className="relative group overflow-hidden bg-[#e5e5e5] rounded-sm shadow-sm transition-all duration-700 hover:shadow-2xl">
             <video
               src="/videos/Quilling Frame Videos/QFV1.mp4"
@@ -123,27 +122,30 @@ export default function Home() {
               muted
               playsInline
             />
-            <div className="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition-colors duration-700" />
-             <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 p-8 text-center ring-1 ring-inset ring-white/20 m-4">
-              <span className="text-white uppercase tracking-[0.4em] text-[10px] font-bold mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700">View Art</span>
-              <p className="text-white font-[family-name:var(--font-serif)] text-3xl transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700 delay-100 italic">Paper Art</p>
-            </div>
-            <div className="absolute bottom-8 left-8 group-hover:opacity-0 transition-opacity duration-500">
-              <p className="text-white uppercase tracking-widest text-[9px] font-bold bg-black/20 backdrop-blur-sm px-3 py-1">Paper Art</p>
+            <div className="absolute inset-0 bg-black/30 md:bg-black/10 md:group-hover:bg-black/40 transition-colors duration-700" />
+             <div className="absolute inset-0 flex flex-col items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-700 p-8 text-center ring-1 ring-inset ring-white/20 m-4">
+              <span className="text-white uppercase tracking-[0.4em] text-[10px] font-bold mb-4 transform translate-y-0 md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-700">View Art</span>
+              <p className="text-white font-[family-name:var(--font-serif)] text-3xl transform translate-y-0 md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-700 delay-100 italic">Paper Art</p>
             </div>
           </Link>
 
-          <Link href="/products?category=workshops" className="relative group overflow-hidden bg-[#f5f5f5] rounded-sm shadow-sm transition-all duration-700 hover:shadow-2xl">
-            <Image src="/images/Quilling Frame/QF5.jpeg" alt="Workshop" fill className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110" />
-            <div className="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition-colors duration-700" />
-             <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 p-8 text-center ring-1 ring-inset ring-white/20 m-4">
-              <span className="text-white uppercase tracking-[0.4em] text-[10px] font-bold mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700">Join Us</span>
-              <p className="text-white font-[family-name:var(--font-serif)] text-3xl transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700 delay-100 italic">Learning</p>
-            </div>
-            <div className="absolute bottom-8 left-8 group-hover:opacity-0 transition-opacity duration-500">
-              <p className="text-white uppercase tracking-widest text-[9px] font-bold bg-black/20 backdrop-blur-sm px-3 py-1">Learning</p>
-            </div>
-          </Link>
+          {/* IMAGE 1: Atelier Detail - Row 1, Col 3 */}
+          <div className="relative group overflow-hidden rounded-sm shadow-sm">
+            <Image src="/images/Crafting Memories/CM1.jpeg" alt="Atelier Detail" fill className="object-cover transition-transform duration-[1200ms] group-hover:scale-110" />
+            <div className="absolute inset-0 bg-black/5 group-hover:bg-black/20 transition-colors duration-700" />
+          </div>
+
+          {/* IMAGE 3: The Process - Row 2, Col 2 */}
+          <div className="relative group overflow-hidden rounded-sm shadow-sm">
+            <Image src="/images/Crafting Memories/CM2.jpeg" alt="The Process" fill className="object-cover transition-transform duration-[1200ms] group-hover:scale-110" />
+            <div className="absolute inset-0 bg-black/5 group-hover:bg-black/20 transition-colors duration-700" />
+          </div>
+
+          {/* IMAGE 4: Finished Work - Row 2, Col 3 */}
+          <div className="relative group overflow-hidden rounded-sm shadow-sm">
+            <Image src="/images/Crafting Memories/CM3.jpeg" alt="Finished Work" fill className="object-cover transition-transform duration-[1200ms] group-hover:scale-110" />
+            <div className="absolute inset-0 bg-black/5 group-hover:bg-black/20 transition-colors duration-700" />
+          </div>
         </div>
 
         <div className="text-center mt-12">
@@ -153,8 +155,7 @@ export default function Home() {
         </div>
       </section>
       
-      {/* 4.1 CRAFTING MEMORIES showcase */}
-      <CraftingMemories />
+
 
       {/* 5. CTA SECTION */}
       <section className="bg-[var(--color-ink)] text-[#FDF9F9] py-32 px-6 text-center">

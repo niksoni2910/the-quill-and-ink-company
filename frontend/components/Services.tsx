@@ -21,7 +21,7 @@ const services = [
     {
         title: "Learning Hub",
         tag: "Workshops",
-        image: "/images/Quilling Frame/QF4.jpeg",
+        image: "/images/Learning Hub/LH1.jpeg",
         description: "Join our intimate sessions to master the art of the nib and quilling.",
         width: "md:col-span-1"
     },
@@ -80,10 +80,10 @@ export default function Services() {
                                 fill
                                 className="object-cover transition-transform duration-1000 group-hover:scale-105"
                             />
-                            {/* OVERLAY */}
-                            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500" />
+                            {/* OVERLAY: Persistent on mobile for better visibility */}
+                            <div className="absolute inset-0 bg-black/40 md:bg-black/20 md:group-hover:bg-black/40 transition-colors duration-500" />
 
-                            {/* CONTENT */}
+                            {/* CONTENT: Always visible on mobile, reveal on hover on desktop */}
                             <div className="absolute inset-0 p-10 flex flex-col justify-between text-white z-10">
                                 <div className="overflow-hidden">
                                     <motion.span 
@@ -96,9 +96,9 @@ export default function Services() {
                                     </motion.span>
                                 </div>
                                 <div>
-                                    <h3 className="font-[family-name:var(--font-serif)] text-3xl lg:text-4xl mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700 ease-[0.22, 1, 0.36, 1]">{service.title}</h3>
-                                    <div className="h-[2px] w-0 group-hover:w-12 bg-[var(--color-rose)] mb-6 transition-all duration-700 delay-100" />
-                                    <p className="text-sm opacity-0 group-hover:opacity-70 transition-all duration-500 delay-200 leading-relaxed max-w-xs transform translate-y-2 group-hover:translate-y-0 text-white/90 font-medium">{service.description}</p>
+                                    <h3 className="font-[family-name:var(--font-serif)] text-3xl lg:text-4xl mb-4 transform translate-y-0 md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-700">{service.title}</h3>
+                                    <div className="h-[2px] w-12 md:w-0 md:group-hover:w-12 bg-[var(--color-rose)] mb-6 transition-all duration-700 delay-100" />
+                                    <p className="text-sm opacity-80 md:opacity-0 md:group-hover:opacity-70 transition-all duration-500 delay-200 leading-relaxed max-w-xs transform translate-y-0 md:translate-y-2 md:group-hover:translate-y-0 text-white/90 font-medium">{service.description}</p>
                                 </div>
                             </div>
 

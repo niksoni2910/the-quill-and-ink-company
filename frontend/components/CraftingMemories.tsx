@@ -7,7 +7,6 @@ const memories = [
   { id: 1, src: "/images/Crafting Memories/CM1.jpeg", alt: "Crafting Memory 1", width: "col-span-2 row-span-2" },
   { id: 2, src: "/images/Crafting Memories/CM2.jpeg", alt: "Crafting Memory 2", width: "col-span-1 row-span-1" },
   { id: 3, src: "/images/Crafting Memories/CM3.jpeg", alt: "Crafting Memory 3", width: "col-span-1 row-span-1" },
-  { id: 4, src: "/images/Crafting Memories/CM4.jpeg", alt: "Crafting Memory 4", width: "col-span-2 row-span-1" },
 ];
 
 export default function CraftingMemories() {
