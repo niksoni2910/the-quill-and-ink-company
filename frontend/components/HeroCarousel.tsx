@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 const images = [
-  "/images/Customised Engraving/CE1.jpeg",
+  "/images/Customised Engraving/CE6.jpeg",
   "/images/Quilling Frame/QF1.jpeg",
   "/images/Customised Engraving/CE2.jpeg",
   "/images/Quilling Frame/QF2.jpeg",
