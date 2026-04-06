@@ -4,6 +4,7 @@ const resetAndCreateTables = async () => {
   try {
     await pool.query(`
       DROP TABLE IF EXISTS
+        order_items,
         product_images,
         cart_items,
         carts,
@@ -46,7 +47,7 @@ const resetAndCreateTables = async () => {
         price NUMERIC(10,2) NOT NULL,
         category_id UUID REFERENCES categories(id) ON DELETE SET NULL,
         status VARCHAR(20) DEFAULT 'active',
-        badge VARCHAR(20),
+        badge VARCHAR(50),
         description TEXT,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
@@ -70,7 +71,7 @@ const resetAndCreateTables = async () => {
       CREATE TABLE cart_items (
         id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
         cart_id UUID REFERENCES carts(id) ON DELETE CASCADE,
-        product_id UUID REFERENCES products(id),
+        product_id UUID REFERENCES products(id) ON DELETE SET NULL,
         product_name VARCHAR(150),
         price NUMERIC(10,2),
         quantity INTEGER,
@@ -80,11 +81,22 @@ const resetAndCreateTables = async () => {
       -- ORDERS
       CREATE TABLE orders (
         id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-        user_id UUID REFERENCES users(id),
+        user_id UUID REFERENCES users(id) ON DELETE CASCADE,
         shipping_address TEXT,
         price NUMERIC(10,2),
         status VARCHAR(20) DEFAULT 'pending',
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      );
+
+      -- ORDER ITEMS (Preserves snapshot after cart deletion)
+      CREATE TABLE order_items (
+        id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+        order_id UUID REFERENCES orders(id) ON DELETE CASCADE,
+        product_id UUID REFERENCES products(id) ON DELETE SET NULL,
+        product_name VARCHAR(150),
+        price NUMERIC(10,2),
+        quantity INTEGER,
+        custom_texts TEXT[]
       );
     `);
 

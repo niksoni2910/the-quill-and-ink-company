@@ -91,7 +91,7 @@ export const getProductById = async (req, res) => {
 
   try {
     const productRes = await pool.query(
-      `SELECT id, name, price, description, created_at
+      `SELECT id, name, price, description, badge, category_id, created_at
        FROM products
        WHERE id = $1`,
       [id]
@@ -127,21 +127,36 @@ export const updateProduct = async (req, res) => {
   const { name, price, images } = req.body;
 
   try {
-    // 1️⃣ Update product fields
-    const productRes = await pool.query(
-      `UPDATE products
-       SET name = COALESCE($1, name),
-           price = COALESCE($2, price),
-           description = COALESCE($3, description),
-           category_id = COALESCE($4, category_id),
-           badge = COALESCE($5, badge)
-       WHERE id = $6
-       RETURNING id, name, price, description, category_id, badge`,
-      [name, price, req.body.description, req.body.category_id, req.body.badge, id]
-    );
+    // Build dynamic update to allow setting fields to NULL while ignoring omitted fields
+    const updates = [];
+    const values = [];
+    let idx = 1;
 
-    if (productRes.rows.length === 0) {
-      return res.status(404).json({ error: "Product not found" });
+    const fields = [
+      { key: "name", value: name },
+      { key: "price", value: price },
+      { key: "description", value: req.body.description },
+      { key: "category_id", value: req.body.category_id },
+      { key: "badge", value: req.body.badge },
+    ];
+
+    fields.forEach((f) => {
+      if (f.value !== undefined) {
+        updates.push(`${f.key} = $${idx++}`);
+        values.push(f.value);
+      }
+    });
+
+    if (updates.length > 0) {
+      values.push(id);
+      const productRes = await pool.query(
+        `UPDATE products SET ${updates.join(", ")} WHERE id = $${idx} RETURNING *`,
+        values
+      );
+
+      if (productRes.rows.length === 0) {
+        return res.status(404).json({ error: "Product not found" });
+      }
     }
 
     // 2️⃣ If images provided → replace old images
